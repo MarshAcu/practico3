@@ -22,16 +22,17 @@ function App() {
   useEffect(() => {
       setGanador(playerName);
       onWin();
-  }, [playerScore == 3 ]);
+  }, [playerScore === 3 ]);
 
   useEffect(() => {
     setGanador('PC');
     onWin();
-  }, [ pcScore == 3 ]);
+  }, [ pcScore === 3 ]);
 
   const onAddNamePlayer = ( namePlayer ) => {
 
     setIsReady(true);
+    setResult(false);
     setPlayerName(namePlayer);
   }
 
@@ -58,6 +59,7 @@ function App() {
   }
 
   const onWin = () => {
+    if(playerScore < 3 && pcScore < 3) return;
     setIsReady(false);
     setResult(true);
     setPcScore(0);
